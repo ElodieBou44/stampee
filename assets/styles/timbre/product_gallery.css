@@ -1,0 +1,151 @@
+/* Inspiration du code Démo Carte avec Bouton de Marc-André Charpentier */
+
+/**************   Titre   **************/
+.gallery-product__title{
+    font-size: var(--font-size-h1);
+    padding-left: var(--spacing);
+    padding-top: var(--spacing-wide); 
+    font-family: 'Roboto bold';
+}
+
+/**************   Gallerie   **************/
+/* Qui comprend aussi les boutons sous la liste d'articles*/
+
+.gallery-product{
+    display: flex;
+    flex-flow: column;
+    flex-grow: 100;
+	flex-basis: 50ch;
+    padding: 4em 2em 0 2em;
+}
+
+/**************   Liste d'articles   **************/
+
+.gallery-product__list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: var(--spacing);
+    padding: var(--spacing-wide);  
+    border: 1px solid var(--light-gray);
+}
+
+/**************  Milieu   **************/
+/* Utilisé pour obtenir le résultat voulu */
+
+.gallery-product__middle{
+    display: flex;
+	height: 200px;
+	flex-direction: column;
+    border-style: none;
+    border: 1px solid var(--lighter-gray);
+    padding: 0 0 4em 0; 
+}
+
+/**************   Article   **************/
+
+.gallery-product__item{
+    display: grid;
+	flex-wrap: wrap;
+	align-content: start;
+    grid-template-rows: 5fr 4fr;
+
+	justify-content: stretch;
+	top: 0;
+	
+	overflow: clip;
+}
+
+/* Contenant de l'image et image */
+
+.gallery-product__image-wrapper {
+    display: flex;
+    justify-content: center;
+	flex-direction: column;
+    flex-shrink: 0;
+    height: 100%;
+}
+
+.gallery-product__image{
+    object-fit: cover;
+    margin: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* Texte des articles  */
+
+.item-product__title{
+    font-family: 'Roboto';
+}
+
+.item-product__description{
+    display: flex;
+    flex-direction: column;
+	align-items: center;
+    text-align: center;
+    background-color: var(--lighter-gray);
+    padding: var(--spacing);
+    justify-content: space-between;
+    color: var(--dark-gray);
+}
+
+.item-product__price{
+    font-family: 'Lora';
+}
+
+.item-product__price{
+    font-family: 'Lora bold';
+    font-size: 18px; 
+}
+
+.item-product__icons{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item-product__icons img{
+    width: 25%;
+}
+
+/* Hovers */
+
+.gallery-product__item:hover .gallery__item-hover {
+    display: block;
+}
+
+.gallery-product__item:hover .gallery-product__image,
+.gallery-product__item:hover .item-product__description {
+    opacity: 0.6; 
+}
+
+.gallery-product__item:hover .gallery__button{
+    border: 1px solid var(--red); 
+}
+
+/**************   Éléments de hover   **************/
+
+.gallery__item-hover-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: var(--spacing);
+}
+
+.gallery__item-hover{
+    display: none; 
+    font-size: 30px;
+    font-family: 'Roboto bold';
+    color: var(--red);
+    background-color: var(--white);
+}
+
+/**************   Boutons   **************/
+
+.gallery__buttons{
+    padding: 2em 0 2em 0;
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-wider); 
+}

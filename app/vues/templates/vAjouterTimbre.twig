@@ -1,0 +1,61 @@
+<section class="ajout-enchere__page">
+	<h1 class="ajout-enchere__title">Ajout d'un timbre</h1>
+	<p class="messageRetourAction {{ classRetour }}">{{ messageRetourAction }}&nbsp;</p>
+	<br/>
+	<form class="member__form" name="frmAjoutTimbre" method="POST" action="compte?entite=membre&action=acm">
+		<div class="member__items">
+			<label>Nom du timbre:</label>
+			<input type="text" name="timbre_nom" value="" class="member__input"/>
+		</div>
+		<span class="member__error">&nbsp;{{ erreurs.timbre_nom }}</span>
+		<div class="member__items">
+			<label>Date de création du timbre:</label>
+			<input type="text" name="timbre_date_creation" placeholder="AAAA-MM-JJ" value="" class="member__input"/>
+		</div>
+		<span class="member__error">&nbsp;{{ erreurs.timbre_date_creation }}</span>
+		<div class="member__items">
+			<label>Pays de provenance du timbre:</label>
+			<input type="text" name="timbre_pays" placeholder="AAAA-MM-JJ" value="" class="member__input"/>
+		</div>
+		<span class="member__error">&nbsp;{{ erreurs.timbre_pays }}</span>
+		<div class="member__items">
+			<label>Condition du timbre:</label>
+			<select name="timbre_condition">
+				<option>Parfait</option>
+				<option>Excellente</option>
+				<option>Bonne</option>
+				<option>Moyenne</option>
+				<option>Endommagé</option>
+			</select>
+		</div>
+		<span class="member__error">&nbsp;{{ erreurs.timbre_condition }}</span>
+		<div class="member__items">
+			<label>Dimensions du timbre (hauteur x largeur):</label>
+			<input type="text" name="timbre_dimensions" placeholder="00cm x 00cm" value="" class="member__input"/>
+		</div>
+		<span class="member__error">&nbsp;{{ erreurs.timbre_dimensions }}</span>
+		<div class="member__items">
+			<label>Le timbre est-il certifié?</label>
+			<select name="timbre_certification">
+				<option value="oui">Oui</option>
+				<option value="non">Non</option>
+			</select>
+		</div>
+		<span class="member__error">&nbsp;{{ erreurs.timbre_certification }}</span>
+		<div class="member__items">
+			<label>Tirage (en nombres):</label>
+			<input type="number" name="timbre_tirage" inputmode="numeric" value="" class="member__input"/>
+		</div>
+		<span class="member__error">&nbsp;{{ erreurs.timbre_tirage }}</span>
+		<div class="member__items">
+			<label>Couleur principale du timbre:</label>
+			<input type="text" name="timbre_couleurs" value="" class="member__input"/>
+		</div>
+		<span class="member__error">&nbsp;{{ erreurs.timbre_couleurs }}</span>
+		<div class="member__items cache">
+			<label>Id de l'utilisateur:</label>
+			<input type="text" name="enchere_utilisateur_id" value="{{ oUtilConn.utilisateur_id }}"/>
+		</div>
+		<input type="submit" value="Ajouter un timbre" class="member__button button--red"/>
+	</form>
+</section>

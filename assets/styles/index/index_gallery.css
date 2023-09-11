@@ -1,0 +1,167 @@
+/* Inspiration du code Démo Carte avec Bouton de Marc-André Charpentier */
+
+/**************   Titre et légende d'icônes   **************/
+.legend{
+    padding: 5em 1em 4em 1em; 
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.legend__title{
+    font-size: 40px;
+    padding-bottom: .5em;
+    font-family: 'Roboto bold';
+}
+
+.legend__text{
+    padding-bottom: var(--spacing); 
+    font-size: var(--font-size-p);
+}
+
+.legend__icons{
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-wide);
+}
+
+/**************   Gallerie   **************/
+/* Qui comprend aussi les boutons sous la liste d'articles*/
+
+.gallery-index{
+    display: flex;
+    flex-flow: column;
+    flex-grow: 100;
+	flex-basis: 50ch;
+    padding: 0 2em 0 2em;
+}
+
+/**************   Liste d'articles   **************/
+
+.gallery-index__list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: var(--spacing);
+    padding: 0 2em 0 2em;  
+}
+
+/**************  Milieu   **************/
+/* Utilisé pour obtenir le résultat voulu */
+
+.gallery-index__middle{
+    display: flex;
+	height: 200px;
+	flex-direction: column;
+    border-style: none;
+    border: 1px solid var(--lighter-gray);
+    padding: 0 0 4em 0; 
+}
+
+/**************   Article   **************/
+
+.gallery-index__item{
+    display: grid;
+	flex-wrap: wrap;
+	align-content: start;
+    grid-template-rows: 5fr 4fr;
+
+	justify-content: stretch;
+	top: 0;
+	
+	overflow: clip;
+}
+
+/* Contenant de l'image et image */
+
+.gallery-index__image-wrapper {
+    display: flex;
+    justify-content: center;
+	flex-direction: column;
+    flex-shrink: 0;
+    height: 100%;
+}
+
+.gallery-index__image{
+    object-fit: cover;
+    margin: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* Texte des articles  */
+
+.item-index__title{
+    font-family: 'Roboto';
+}
+
+.item-index__description{
+    display: flex;
+    flex-direction: column;
+	align-items: center;
+    text-align: center;
+    background-color: var(--lighter-gray);
+    padding: var(--spacing);
+    justify-content: space-between;
+    color: var(--dark-gray);
+}
+
+.item-index__price{
+    font-family: 'Lora';
+}
+
+.item-index__price{
+    font-family: 'Lora bold';
+    font-size: 18px; 
+}
+
+.item-index__icons{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item-index__icons img{
+    width: 25%;
+}
+
+/* Hovers */
+
+.gallery-index__item:hover .gallery__item-hover {
+    display: block;
+}
+
+.gallery-index__item:hover .gallery-index__image,
+.gallery-index__item:hover .item-index__description {
+    opacity: 0.6; 
+}
+
+.gallery-index__item:hover .gallery__button{
+    border: 1px solid var(--red); 
+}
+
+/**************   Éléments de hover   **************/
+
+.gallery__item-hover-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: var(--spacing);
+}
+
+.gallery__item-hover{
+    display: none; 
+    font-size: 30px;
+    font-family: 'Roboto bold';
+    color: var(--red);
+    background-color: var(--white);
+}
+
+/**************   Boutons   **************/
+
+.gallery__buttons{
+    padding: 2em 0 2em 0;
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-wider); 
+}

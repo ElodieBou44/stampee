@@ -1,0 +1,33 @@
+.mise__form{
+    font-family: 'Roboto'; 
+    border: 1px solid var(--light-gray);
+    border-radius: 4px;
+    padding: var(--spacing-wide);
+    max-width: 70%;
+    display: flex;
+    flex-flow: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+.mise__h2{
+    font-family: 'Roboto bold';
+    color: var(--dark-gray); 
+    font-size: 1.25em;
+    padding-bottom: 1em;
+    text-align: center;
+}
+
+.mise__subtitle{
+    font-family: 'Roboto';
+}
+
+.mise__subtitle--bold{
+    font-family: 'Roboto bold';
+    margin-bottom: 1em;
+}
+
+.mise__span{
+    font-family: 'Lora';
+    color: var(--red); 
+}

@@ -1,0 +1,194 @@
+.card__product{
+    display: flex;
+}
+
+/**************   Images du timbre (côté droit de la fiche produit)  **************/
+
+.stamp-preview{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 2.5em; 
+    flex: 1;
+    width: 50%;
+}
+
+/* Grande image du timbre */
+
+.stamp-preview__image-wrapper{
+    max-width: 30em; 
+    max-height: 30em;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+.stamp-preview__image-wrapper,
+.stamp-preview__frame-left-wrapper,
+.stamp-details__subtitles,
+.stamp-details__other{
+    padding-left: var(--spacing-wide); 
+}
+
+.stamp-preview__frame-left-wrapper{
+    display: flex; 
+    justify-content: flex-start; 
+}
+
+.stamp-preview__frame-right-wrapper{
+    display: flex; 
+    justify-content: flex-end; 
+}
+
+.stamp-preview__frame-right-wrapper,
+.stamp-details__subtitles{
+    padding-right: var(--spacing-wide);
+}
+
+.stamp-preview__image-frame{
+    display: flex;
+    flex-direction: column;
+}
+
+.stamp-preview__frame-left, 
+.stamp-preview__frame-right{
+    max-width: 10%; 
+}
+
+.stamp-preview__image{
+    max-width: 60%; 
+    object-fit: cover;
+}
+
+.stamp-preview__image:hover,
+.stamp-preview__item:hover{
+    cursor: zoom-in;
+}
+
+/* Petites images du timbre */
+
+.stamp-preview__gallery{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+.stamp-preview__item-wrapper{
+    flex: 0 0 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--lighter-gray);
+    padding: 5px; 
+}
+
+.stamp-preview__item{
+max-width: 100%;
+max-height: 100%;
+object-fit: contain;
+}
+
+.stamp-preview__item:hover,
+.stamp-preview__image:hover{
+    opacity: 50%;
+}
+
+/* Légendes rare et offre vedette */
+
+.legend__icons{
+    align-items: center;
+    justify-content: center; 
+    padding-bottom: var(--spacing);
+}
+
+.legend__icons-rare{
+    min-width: 50%;
+}
+
+/**************   Détails sur le timbre (côté gauche de la fiche produit)  **************/
+
+
+.stamp-details{
+    margin-right: 2.5em; 
+    flex: 1;
+    width: 50%;
+    background-color: var(--lighter-gray);
+    padding: var(--spacing-wide);
+    font-family: 'Roboto';
+    color: var(--dark-gray);
+}
+
+/* Item suivi */
+
+.stamp-details__followed{
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+    gap: .5em;
+}
+
+.stamp-details__followed-icon{
+    width: 5%; 
+}
+
+.stamp-details__followed-text{
+    font-family: 'Roboto';
+}
+
+/* Titre */
+
+.stamp-details__title{
+    font-size: 1.5em;
+    font-family: 'Lora bold';
+    text-align: center;
+    padding-top: var(--spacing-wider);
+    line-height: 1.5;
+}
+
+.stamp-details__line{
+    margin: 4em; 
+    border: 1px solid var(--red);
+}
+
+/* Texte */
+
+.stamp-details__time,
+.stamp-details__price{
+    font-size: 20px; 
+}
+
+.stamp-details__price{
+    margin-bottom: var(--spacing);
+}
+.stamp-details--bold{
+    font-family:'Roboto bold';
+}
+
+.stamp-details__offer{
+    font-size: 25px; 
+}
+
+.stamp-details__other,
+.stamp-details__offer,
+.stamp-details__time{
+    margin-bottom: var(--spacing-wide);
+}
+
+.stamp-details__other-text{
+    margin-bottom: .5em; 
+}
+
+.stamp-details__time{
+    padding-left: 1.7em;
+}
+
+.stamp-details__price-button-wrapper{
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stamp-details__button-wrapper{
+    display: flex;
+    justify-content: center;
+}

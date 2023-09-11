@@ -1,0 +1,21 @@
+.article__horizontal-line {
+    border: 1px solid #b037375c;
+    width: 90%; 
+    margin: 1em auto 0 auto; 
+}
+
+.breadcrumbs__list {
+    padding: 2.5em; 
+    display: flex; 
+    font-family: 'Roboto';
+}
+
+.breadcrumbs-item__link {
+    color: var(--dark-gray); 
+}
+
+.breadcrumbs__item:not(:last-child)::after {
+    content: "/";
+    margin: 0 0.5em;
+}
+

@@ -1,0 +1,250 @@
+/********* Page Index *********/
+
+/* Header */
+@media screen and (max-width: 768px) {
+    .nav__list {
+    flex-direction: column;
+    align-items: center;
+    }
+
+    .recherche__wrapper{
+        padding-top: 2em; 
+    }
+
+    .logo{
+        display: none;
+    }
+
+    .nav__list li{
+        position: relative; 
+    }
+
+    .dropdown{
+        margin-top: var(--spacing);
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end; 
+        margin-top: 1em;
+    }
+
+    .dropdown__content {
+        position: absolute;
+        left: 0; 
+        top: 100%; 
+        min-width: 10em;
+        text-align: center;
+        z-index: 1;
+    }
+
+    .dropdown:hover .dropdown__content {
+        display: block;
+    }
+  
+    .nav-sec {
+      display: block;
+      padding: 0em 2em 2em 2em; 
+    }
+  
+    .nav-sec__list {
+      flex-direction: column;
+      align-items: center;
+    }
+}
+
+/* Hero */
+@media screen and (max-width: 768px) {
+    
+    .hero{
+        flex-flow: column;
+        padding: var(--spacing); 
+    }
+    .hero__text,
+    .hero__signature{
+        margin: 0; 
+    }
+
+    .hero__signature{
+        padding: 0; 
+        margin-bottom: .5em;
+    }
+
+}
+
+/* Règlements */
+@media screen and (max-width: 768px) {
+    
+    .rules{
+        flex-flow: column;
+    }
+
+    .rules,
+    .rules__title{
+        padding-top: var(--spacing); 
+    }
+
+    .rules__title{
+        text-align: center;
+    }
+    .rules__text{
+        max-width: 100%;
+        padding: var(--spacing); 
+    }
+    .rules__title{
+        padding: 0.5em 0em 0.5em 0em; 
+    }
+    .rules_image-wrapper,
+    .rules_image{
+        display: none;
+    }
+}
+
+/* Gallerie de l'index */
+@media screen and (max-width: 768px) {
+    
+    .legend__text{
+        text-align: center;
+    }
+}
+
+/* Biographie */
+@media screen and (max-width: 768px) {
+    
+    .biography{
+        flex-flow: column;
+    }
+    .biography__image-wrapper,
+    .biography__legend{
+        width: 100%; 
+    }
+    .biography__title{
+        padding-top: var(--spacing);  
+    }
+}
+
+/* Actualité */
+@media screen and (max-width: 768px) {
+    
+    .news__list{
+        flex-flow: column;
+    }
+}
+
+/* Catalogue */
+@media screen and (max-width: 768px) {
+    .catalogue__container {
+        flex-direction: column;
+    }
+  
+    .catalogue__aside {
+        flex: 1;
+        font-family: 'Roboto';
+        padding: 20px;
+        width: 100%;
+    }
+    
+    .catalogue__main {
+        flex: 1;
+        width: 100%;
+    }
+
+    .catalogue__item-hover{
+        font-size: 20px; 
+    }
+}
+
+/* Timbre */
+@media screen and (max-width: 768px) {
+    .card__product {
+        flex-direction: column;
+    }
+
+    .stamp-preview,
+    .stamp-details {
+        width: 100%;
+        padding: 0;
+    }
+
+    .stamp-preview__image-frame,
+    .stamp-details__subtitles,
+    .stamp-details__other {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .stamp-preview__image-wrapper {
+        max-width: 100%;
+        max-height: 100%;
+        padding: 1em;
+    }
+
+    .stamp-details{
+        padding: var(--spacing);
+    }
+
+    .stamp-details__offer{
+        padding: 1em 0 1em 0; 
+        margin: 0;
+    }
+
+    .stamp-details__title {
+        padding-top: var(--spacing-wide);
+    }
+
+    .stamp-details__line {
+        margin: 2em;
+    }
+
+    .stamp-details__price-button-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .stamp-details__time {
+        padding-left: 0;
+    }
+
+    .stamp-details__button-wrapper{
+        padding-bottom: 1em; 
+    }
+
+    .gallery-product__title{
+        text-align: center;
+        padding: 1em 0 1em 0; 
+    }
+
+    .gallery-product__list {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        padding: var(--spacing);
+    }
+}
+
+/* Espace membre */
+@media screen and (max-width: 768px) {
+    .member__div-title {
+        padding: 1em 0;
+    }
+
+    .member__title {
+        font-size: 24px;
+    }
+
+    .member__main,
+    .member__aside-list {
+        padding: 1em;
+    }
+
+    .member__aside-list {
+        min-width: 10em; 
+        padding-top: 2em;
+    }
+}
+
+/* Footer */
+@media screen and (max-width: 768px) {
+    
+    .footer__text{
+        flex-wrap: wrap;
+        justify-content: space-around;
+        padding: var(--spacing); 
+    }
+}

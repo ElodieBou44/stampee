@@ -1,0 +1,28 @@
+<section class="member__page">
+	<h1 class="member__title">Création de compte</h1>
+	<p class="messageRetourAction {{ classRetour }}">{{ messageRetourAction }}&nbsp;</p>
+	<br/>
+	<form class="member__form" name="frmCC" method="POST" action="compte?entite=devenirMembre&action=cc">
+		<div class="member__items">
+			<label>Prénom:</label>
+			<input name="utilisateur_prenom" value="{{ utilisateur.utilisateur_prenom }}" class="member__input"/>
+		</div>
+		<span class="member__error">&nbsp;{{ erreurs.utilisateur_prenom }}</span>
+		<div class="member__items">
+			<label>Nom:</label>
+			<input type="text" name="utilisateur_nom" value="{{ utilisateur.utilisateur_nom }}" class="member__input"/>
+		</div>
+		<span class="member__error">&nbsp;{{ erreurs.utilisateur_nom }}</span>
+		<div class="member__items">
+			<label>Courriel:</label>
+			<input type="text" name="utilisateur_courriel" value="{{ utilisateur.utilisateur_courriel }}" class="member__input"/>
+		</div>
+		<span class="member__error">&nbsp;{{ erreurs.utilisateur_courriel }}</span>
+		<div class="member__items">
+			<label>Mot de passe:</label>
+			<input type="password" name="utilisateur_mdp" value="{{ utilisateur.utilisateur_mdp }}" class="member__input"/>
+		</div>
+		<span class="member__error">&nbsp;{{ erreurs.utilisateur_mdp }}</span>
+		<input type="submit" value="Créer mon compte" class="member__button button--red"/>
+	</form>
+</section>

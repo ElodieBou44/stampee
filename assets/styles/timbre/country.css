@@ -1,0 +1,14 @@
+.country__wrapper{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: var(--spacing-wider);
+    margin-bottom: var(--spacing-wide); 
+}
+
+.country__name{
+    font-family: 'Roboto';
+    font-size: 18px;
+    text-transform: uppercase;
+    padding-right: var(--spacing-wide);
+}

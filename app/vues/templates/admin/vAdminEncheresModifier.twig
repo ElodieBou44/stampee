@@ -1,0 +1,63 @@
+{% set fichiers_images = enchere.fichiers_images %}
+{% set fichier_image = fichiers_images|split(' ')|first %}
+
+<section class="ajout-enchere__page">
+	<h1 class="ajout-timbre__title">Modification de l'enchère numéro
+		{{ enchere.enchere_id }}</h1>
+	<h2 class="ajout-timbre__subtitle">
+		Pour le timbre:
+		{{ timbre }}</h2>
+	<p class=" messageRetourActionModifier ">{{ messageRetourAction }}&nbsp;</p>
+	<br/>
+	<form class="member__form" name="frmModifierEnchere" method="POST" action="compte?entite=membre&action=moe&enchere_id={{ enchere.enchere_id }}">
+		<div class="member__items cache">
+			<label>Id de l'enchère:</label>
+			<input type="text" name="enchere_id" value="{{ enchere.enchere_id }}" class="member__input"/>
+		</div>
+		<span class="member__error">&nbsp;{{ erreurs.enchere_id }}</span>
+		<div class="member__items">
+			<label>Début de la période d'activité:</label>
+			<input type="text" name="enchere_periode_activite_debut" value="{{ enchere.enchere_periode_activite_debut }}" class="member__input"/>
+		</div>
+		<span class="member__error">&nbsp;{{ erreurs.enchere_periode_activite_debut }}</span>
+		<div class="member__items">
+			<label>Prix plancher:</label>
+			<input type="text" name="enchere_prix_plancher" value="{{ enchere.enchere_prix_plancher }}" class="member__input"/>
+		</div>
+		<span class="member__error">&nbsp;{{ erreurs.enchere_prix_plancher }}</span>
+		<div class="member__items">
+			<label>Fin de la période d'activité:</label>
+			<input type="text" name="enchere_periode_activite_fin" value="{{ enchere.enchere_periode_activite_fin }}" class="member__input"/>
+		</div>
+		<span class="member__error">&nbsp;{{ erreurs.enchere_periode_activite_fin }}</span>
+		<div class="member__items">
+			<label>Quantité de mises:</label>
+			<input type="text" name="enchere_quantite_mises" value="{{ enchere.enchere_quantite_mises }}" class="member__input"/>
+		</div>
+		<span class="member__error">&nbsp;{{ erreurs.enchere_quantite_mises }}</span>
+		<div class="member__items cache">
+			<label>Offre actuelle:</label>
+			<input type="text" name="enchere_offre_actuelle_prix" value="{{ enchere.enchere_offre_actuelle_prix }}" class="member__input"/>
+		</div>
+		<span class="member__error">&nbsp;{{ erreurs.enchere_offre_actuelle_prix }}</span>
+		<div class="member__items cache">
+			<label>Nom du membre miseur:</label>
+			<input type="text" name="enchere_offre_actuelle_nom_membre" value="{{ enchere.enchere_offre_actuelle_nom_membre }}" class="member__input"/>
+		</div>
+		<span class="member__error">&nbsp;{{ erreurs.enchere_offre_actuelle_nom_membre }}</span>
+		<div class="member__items">
+			<label>Coup de coeur du Lord:</label>
+			<select name="enchere_cdc_lord">
+				<option value="1">Oui</option>
+				<option value="0">Non</option>
+			</select>
+		</div>
+		<span class="member__error">&nbsp;{{ erreurs.enchere_cdc_lord }}</span>
+		<div class="member__items">
+			<label>Id de l'utilisateur:</label>
+			<input type="text" name="enchere_utilisateur_id" value="{{ enchere.enchere_utilisateur_id }}"/>
+		</div>
+		<span class="member__error">&nbsp;{{ erreurs.enchere_utilisateur_id }}</span>
+		<input type="submit" value="Modifier l'enchère" class="member__button button--red" formaction="admin?entite=encheres&action=ame&enchere_id={{ enchere.enchere_id }}"/>
+	</form>
+</section>

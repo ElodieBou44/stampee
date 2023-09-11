@@ -1,0 +1,147 @@
+@import "header.css"; 
+@import "index/hero.css"; 
+@import "index/rules.css"; 
+@import "index/index_gallery.css";
+@import "index/quote.css"; 
+@import "index/biography.css"; 
+@import "index/news.css"; 
+@import "timbre/product_gallery.css";
+@import "timbre/breadcrumbs.css"; 
+@import "timbre/country.css"; 
+@import "timbre/card_product.css"; 
+@import "timbre/details.css";
+@import "member/member_form.css"; 
+@import "member/member_space.css";
+@import "member/member_mise.css";
+@import "admin/liste_utilisateurs.css"; 
+@import "admin/modifier_utilisateurs.css"; 
+@import "admin/modifier_encheres.css"; 
+@import "catalogue/catalogue.css"; 
+@import "modale.css"; 
+@import "buttons.css"; 
+@import "reset.css"; 
+@import "footer.css"; 
+@import "mediaquery.css"; 
+
+@font-face{
+    font-family: "Beautifully";
+    src: url(/assets/fonts/beautifully_delicious_regular.otf);
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face{
+    font-family: "Lora";
+    src: url(/assets/fonts/lora_regular.ttf);
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face{
+    font-family: "Lora italic";
+    src: url(/assets/fonts/lora_italic.ttf);
+    font-style: italic;
+    font-weight: normal;
+}
+
+@font-face{
+    font-family: "Lora bold";
+    src: url(/assets/fonts/lora_bold.ttf);
+    font-style: normal;
+    font-weight: bold;
+}
+
+@font-face{
+    font-family: "Roboto";
+    src: url(/assets/fonts/roboto_regular.ttf);
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face{
+    font-family: "Roboto bold";
+    src: url(/assets/fonts/roboto_bold.ttf);
+    font-style: normal;
+    font-weight: normal;
+}
+
+*{
+    margin:0;
+    padding:0; 
+    box-sizing:border-box;
+}
+
+body{
+    background-color: var(--white);
+}
+
+@media screen and (max-width: 768px) {
+    
+    body {
+        overflow-x: hidden; 
+      }
+
+}
+
+/* Initialisation de variables */
+
+:root {
+    --red: #B03737;
+    --dark-gray: #302D2C; 
+    --light-gray: #898685; 
+    --lighter-gray: #E4DFDD; 
+    --black: #000000; 
+    --white: #F8F7F2; 
+    --nav-font-size: 20px; 
+    --font-size-p: 16px; 
+    --font-size-h1: 40px; 
+    --font-size-h2: 30px; 
+    --font-size-h3: 20px; 
+    --line-height: 1.5em; 
+    --spacing: 1em; 
+    --spacing-wide: 2em; 
+    --spacing-wider: 3em; 
+    --font-size-title: 30px; 
+}
+
+/* Polices générales */
+
+.script{
+    font-family: "Beautifully";
+    text-transform: capitalize;
+}
+
+.cache{
+    display: none; 
+}
+
+em{
+    font-family: "Lora italic";
+}
+
+p{
+
+    /* font-family: "Lora"; */
+    color: var(--dark-gray);
+}
+
+h3{
+    font-family: "Lora bold";
+}
+
+h4{
+    font-family: "Lora";
+}
+
+a{
+    text-decoration: none; 
+}
+
+.--bold{
+    font-family: 'Roboto bold'
+}
+
+.messageRetourAction{
+    font-family: 'Roboto';
+    font-size: 30px;
+}

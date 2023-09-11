@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="robots" content="noindex, nofollow">
+		<title>{{ titre }}</title>
+		<link rel="stylesheet" type="text/css" href="assets/styles/general.css">
+		<script type="module" src="js/connexionDeconnexion.js"></script>
+	</head>
+	<body>
+		<div id="page">
+			<main class="catalogue__main">
+
+				{{ include(templateMain) }}
+
+			</main>
+		</div>
+		{{ include("modaleConnexionFrontend.twig") }}
+	</body>
+</html>

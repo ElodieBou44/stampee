@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="robots" content="noindex, nofollow">
+		<title>{{ titre }}</title>
+		<link rel="stylesheet" type="text/css" href="assets/styles/general.css">
+	</head>
+	<body>
+		<header>
+			<!-- Inspiration de la navigation: Geneviève Mainville -->
+			<nav
+				class="nav">
+				<!-- Navigation secondaire axée sur l'utilisateur -->
+				<div
+					class="nav-sec">
+					<!-- Logo Stampee -->
+					<div class="logo-wrapper">
+						<img class="logo" src="assets/icons/logo_name.svg" alt="Stampee logo">
+					</div>
+
+					<ul
+						class="nav-sec__list">
+						<!-- Connexion / Devenir Membre -->
+						<li class="nav-sec__item">
+							<div class="nav-sec__itemwrapper">
+								{% if oUtilConn %}
+									<a href="deconnecter" class="nav-sec__itemwrapper">
+										<img class="nav-sec__icon" src="../assets/icons/login_icon.svg" alt="Login icon"/>
+										<span id="utilisateur" class="utilisateur_nom">{{ oUtilConn.utilisateur_prenom }}
+											{{ oUtilConn.utilisateur_nom }}</span>
+										<p class="nav-sec__link nav--bold">&nbsp;| Déconnexion</p>
+									</a>
+								{% else %}
+									<a href="connecter" class="nav-sec__itemwrapper">
+										<img class="nav-sec__icon" src="../assets/icons/login_icon.svg" alt="Login icon"/>
+										<p class="nav-sec__link nav--bold">Connexion | Devenir membre</p>
+									</a>
+								{% endif %}
+							</div>
+						</li>
+						<!-- Suivis -->
+						<li class="nav-sec__item">
+							<div class="nav-sec__itemwrapper">
+								<a href="#"><img class="nav-sec__icon icon--heart" src="assets/icons/heart.svg" alt="Followed items icon"></a>
+								<a class="nav-sec__link" href="#">Suivis</a>
+							</div>
+						</li>
+						{% if oUtilConn %}
+							<li class="nav-sec__item">
+								<div class="nav-sec__itemwrapper">
+									<a class="nav-sec__link nav-sec__link--red" id="espaceMembre" href="compte?entite=membre&action=acm">Espace membre</a>
+								</div>
+							</li>
+						{% endif %}
+						<!-- Monnaie -->
+						<li class="nav-sec__item">
+							<label for="currency" class="hidden">Devise :</label>
+							<select name="currency" id="currency">
+								<option value="CAD">CAD</option>
+								<option value="USD">USD</option>
+							</select>
+						</li>
+						<!-- Langue -->
+						<li class="nav-sec__item">
+							<label for="language" class="hidden">Langue :</label>
+							<select name="language" id="language">
+								<option value="FR">FR</option>
+								<option value="EN">EN</option>
+							</select>
+						</li>
+					</ul>
+				</div>
+				<!-- Navigation primaire axée sur l'organisation du site web -->
+				<div
+					class="nav-main">
+					<!-- <div class="nav-main-list"> -->
+					<ul
+						class="nav__list">
+						<!-- Accueil -->
+						<li>
+							<a class="nav__link active" href="/">Accueil</a>
+						</li>
+						<!-- Dropdown À propos -->
+						<li class="dropdown">
+							<a class="dropdown__link" href="#">À propos</a>
+							<ul class="dropdown__content">
+								<li class="dropdown__link-wrapper">
+									<a class="dropdown__link" href="#">La philatélie, c'est la vie</a>
+								</li>
+								<li class="dropdown__link-wrapper">
+									<a class="dropdown__link" href="#">Biographie du Lord</a>
+								</li>
+								<li class="dropdown__link-wrapper">
+									<a class="dropdown__link" href="#">Historique familial</a>
+								</li>
+							</ul>
+						</li>
+						<!-- Dropdown Enchères -->
+						<li class="dropdown">
+							<a class="dropdown__link" href="catalogue?entite=encheres&action=c">Enchères</a>
+							<ul class="dropdown__content">
+								<li class="dropdown__link-wrapper">
+									<a class="dropdown__link" href="catalogue?entite=encheres&action=cpa">Enchères passées</a>
+								</li>
+								<li class="dropdown__link-wrapper">
+									<a class="dropdown__link" href="catalogue?entite=encheres&action=cpr">Enchères en cours</a>
+								</li>
+								<li class="dropdown__link-wrapper">
+									<a class="dropdown__link" href="catalogue?entite=encheres&action=c">Toutes les enchères</a>
+								</li>
+							</ul>
+						</li>
+						<!-- Dropdown Actualités -->
+						<li class="dropdown">
+							<a class="dropdown__link" href="#">Actualités</a>
+							<ul class="dropdown__content">
+								<li class="dropdown__link-wrapper">
+									<a class="dropdown__link" href="#">Timbres</a>
+								</li>
+								<li class="dropdown__link-wrapper">
+									<a class="dropdown__link" href="#">Enchères</a>
+								</li>
+								<li class="dropdown__link-wrapper">
+									<a class="dropdown__link" href="#">Bridge</a>
+								</li>
+							</ul>
+						</li>
+						<!-- </div> -->
+						<!-- Recherche -->
+						<li class="recherche__wrapper">
+							<label for="search-input" class="hidden">Rechercher</label>
+							<input class="recherche" type="search" name="search" id="search-input" placeholder="Rechercher">
+							<img src="assets/icons/search_icon.svg" alt="Search icon">
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</header>
+		<main>
+
+			{{ include(templateMain) }}
+
+		</main>
+	</body>
+</html></div><hr class="footer_horizontal-line"><footer class="footer__text">
+<div>
+	<ul class="footer__list">
+		<li class="footer__subtitle">Fonctionnement de la plateforme</li>
+		<li class="footer__sec-list">
+			<ul>
+				<li><a class="footer__sec-link" href="#">&#x2767; Profil</a></li>
+				<li><a class="footer__sec-link" href="#">&#x2767; Comment placer une offre</a></li>
+				<li><a class="footer__sec-link" href="#">&#x2767; Suivre une enchère</a></li>
+				<li><a class="footer__sec-link" href="#">&#x2767; Trouver l’enchère désirée</a></li>
+				<li><a class="footer__sec-link" href="#">&#x2767; Contacter le webmestre</a></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+<div>
+	<ul class="footer__list">
+		<li class="footer__subtitle">Contactez-nous</li>
+		<li class="footer__sec-list">
+			<ul>
+				<li><a class="footer__sec-link" href="#">&#x2767; Angleterre</a></li>
+				<li><a class="footer__sec-link" href="#">&#x2767; Canada</a></li>
+				<li><a class="footer__sec-link" href="#">&#x2767; US</a></li>
+				<li><a class="footer__sec-link" href="#">&#x2767; Australie</a></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+<div>
+	<ul class="footer__list">
+		<li class="footer__subtitle">Actualités</li>
+		<li class="footer__sec-list">
+			<ul>
+				<li><a class="footer__sec-link" href="#">&#x2767; Timbres</a></li>
+				<li><a class="footer__sec-link" href="#">&#x2767; Enchères</a></li>
+				<li><a class="footer__sec-link" href="#">&#x2767; Bridge</a></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+<div>
+	<ul class="footer__list">
+		<li class="footer__subtitle">À propos</li>
+		<li class="footer__sec-list">
+			<ul>
+				<li><a class="footer__sec-link" href="#">&#x2767; La philatélie, c'est la vie</a></li>
+				<li><a class="footer__sec-link" href="#">&#x2767; Biographie du Lord</a></li>
+				<li><a class="footer__sec-link" href="#">&#x2767; Historique familial</a></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+<div>
+	<ul class="footer__list">
+		<li class="footer__subtitle">Termes et conditions</li>
+		<li class="footer__sec-list">
+			<ul>
+				<li><a class="footer__sec-link" href="#">&#x2767; En savoir plus</a></li>
+				<li><a class="footer__sec-link" href="admin">&#x2767; Admin</a></li>
+			</ul>
+		</li>
+	</ul>
+</div>
+<div class="footer__signature-wrapper">
+	<p class="footer__signature script">Stampee</p>
+</div></footer></body></html>

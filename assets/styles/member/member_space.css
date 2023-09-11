@@ -1,0 +1,45 @@
+.member__div-title{
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+}
+
+.member__title{
+    color:var(--dark-gray);
+    padding: 1.5em 0 0.5em 0; 
+    font-family: 'Lora bold';
+    font-size: 30px;
+}
+
+.member__aside{
+    background-color: var(--white);
+}
+
+.member__a{
+    text-decoration: none;
+    color: var(--red); 
+}
+
+.member__main,
+.member__aside-list 
+{
+    background-color: var(--white);
+}
+
+.member__aside-list{
+    padding: 1em; 
+    min-width: 15em; 
+    display: flex;
+    flex-flow: column;
+    gap: 2em;
+    padding-top: 5em; 
+    font-family: 'Roboto bold';
+}
+
+.member__aside-link{
+    color:var(--red);
+}
+
+.member__aside-link:hover{
+    color:var(--dark-gray);
+}

@@ -1,0 +1,5 @@
+.messageRetourActionModifier{
+    padding: 1em; 
+    font-family: 'Lora italic';
+    color: var(--red);
+}

@@ -1,0 +1,243 @@
+{# Calcul du temps restant entre la date d'aujourd'hui et la fin de l'enchère #}
+{% set dateButoir = timbre.enchere_periode_activite_fin %}
+{% set maintenant = "now" %}
+{% set dateButoirObjet = date(dateButoir) %}
+{% set maintenantObjet = date(maintenant) %}
+{% set difference = dateButoirObjet.diff(maintenantObjet) %}
+
+{% set fichiers_images = timbre.fichiers_images %}
+{% set fichier_image = fichiers_images|split(' ')|first %}
+
+<hr
+class="article__horizontal-line">
+<!-- Fil d'Ariane -->
+<ul class="breadcrumbs__list">
+	<li class="breadcrumbs__item breadcrumbs__item--underline">
+		<a class="breadcrumbs-item__link" href="#">Enchères</a>
+	</li>
+	<li class="breadcrumbs__item breadcrumbs__item--underline">
+		<a class="breadcrumbs-item__link" href="#">Offres vedettes</a>
+	</li>
+	<li class="breadcrumbs__item">Timbre en consultation</li>
+</ul>
+<div class="country__wrapper">
+	<p class="country__name">{{ timbre.timbre_pays }}</p>
+	<img class="country__image" src="assets/icons/{{ timbre.timbre_pays|lower }}_flag.svg" alt="Drapeau de {{ timbre.timbre_pays }}">
+</div>
+<section
+	class="card__product">
+	<!-- Image du timbre et images d'aperçu-->
+	{{ cheminImage }}
+	<div class="stamp-preview">
+		<div class="legend__icons">
+			{% if timbre.enchere_cdc_lord == 1 %}
+				<img class="legend__icons-rare" src="assets/icons/cc_lord.svg" alt="Lord favorite"/>
+			{% endif %}
+		</div>
+		<div class="stamp-preview__image-frame">
+			<div class="stamp-preview__frame-left-wrapper">
+				<img class="stamp-preview__frame-left" src="assets/icons/left-corner.svg" alt="Stamp frame corner left">
+			</div>
+			<div class="stamp-preview__image-wrapper">
+				<img class="stamp-preview__image" src="/assets/img/{{ fichier_image }}" alt="Image principale de {{ timbre.timbre_nom }}">
+			</div>
+			<div class="stamp-preview__frame-right-wrapper">
+				<img class="stamp-preview__frame-right" src="assets/icons/right-corner.svg" alt="Stamp frame corner right">
+			</div>
+		</div>
+		<div class="stamp-preview__gallery"><!-- Endroit où habituellement ce serait plusieurs images différentes du même timbre -->
+			{# {% for image of images %}
+																																																																																																																																																																																																																																																																			<img class="stamp-preview__item" src="assets/img/{{ timbre.timbre_image_secondaire }}" alt="{{ timbre.timbre_nom }}">
+																																																																																																																																																																																																																																																																		{% endfor %} #}
+		</div>
+	</div>
+	<!-- Détails concernant le timbre -->
+	<div class="stamp-details">
+		<div class="stamp-details__followed">
+			<img class="stamp-details__followed-icon" src="assets/icons/red-heart.svg" alt="Followed item">
+			<p class="stamp-details__followed-text">Enregistré</p>
+		</div>
+		<h3 class="stamp-details__title">{{ timbre.timbre_nom }}</h3>
+		<hr class="stamp-details__line">
+		<div class="stamp-details__subtitles">
+			<div class="stamp-details__text">
+				<div class="stamp-details__price-button-wrapper">
+					<p class="stamp-details__price">Prix plancher:
+						{{ timbre.enchere_prix_plancher }}$</p>
+					<button class="stamp-details__button button--gray" id="detailsButton">Détails</button>
+				</div>
+				<p class="stamp-details__offer">
+					Offre actuelle:
+					{% if timbre.enchere_offre_actuelle_prix %}
+						<span class="stamp-details--bold">{{ timbre.enchere_offre_actuelle_prix }}$</span>
+					{% else %}
+						<span>Aucune offre</span>
+					{% endif %}
+				</p>
+			</p>
+		</div>
+	</div>
+	<ul class="stamp-details__other">
+		<li class="stamp-details__other-text">Vendeur:
+			{{ timbre.utilisateur_prenom }}
+			{{timbre.utilisateur_nom}}</li>
+		<li class="stamp-details__other-text">Date de mise en enchère:
+			{{ timbre.enchere_periode_activite_debut }}</li>
+		<li class="stamp-details__other-text">Misé par:
+			{% if timbre.enchere_offre_actuelle_nom_membre %}
+				{{ timbre.enchere_offre_actuelle_nom_membre }}
+			{% else %}
+				-
+			{% endif %}
+		</li>
+		<li class="stamp-details__other-text">Quantité de mises:
+			{% if timbre.enchere_quantite_mises %}
+				<span class="stamp-details--bold">{{ timbre.enchere_quantite_mises }}</span>
+			{% else %}
+				-
+			{% endif %}
+		</li>
+	</ul>
+	<p class="stamp-details__time">Temps restant:
+		<span class="stamp-details--bold">{{ difference.days }}j
+			{{ difference.h }}h
+			{{ difference.i }}m &
+			{{ difference.s }}s</span>
+	</p>
+	<div class="stamp-details__button-wrapper">
+		<a href="compte?entite=membre&action=m&enchere_id={{ timbre.enchere_id }}">
+			<button class="button--red button--wide">Miser</button>
+		</a>
+	</div>
+</div></section><section>
+<h1 class="gallery-product__title">Offres similaires</h1>
+<div class="gallery-product">
+	<div class="gallery-product__list">
+		{% if timbres|length != 0 %}
+			{% for index, timbre in timbres %}
+				{% if index < 5 %}
+					{# Conversion du fichier d'image #}
+					{% set fichiers_images = timbre.fichiers_images %}
+					{% set fichier_image = fichiers_images|split(' ')|first %}
+
+					{# Calcul du temps restant entre la date d'aujourd'hui et la fin de l'enchère #}
+					{% set dateButoir = timbre.enchere_periode_activite_fin %}
+					{% set maintenant = "now" %}
+					{% set dateButoirTimestamp = date(dateButoir)|date("U") %}
+					{% set maintenantTimestamp = date(maintenant)|date("U") %}
+					{% set differenceEnSecondes = dateButoirTimestamp - maintenantTimestamp %}
+
+					{# Conversion des secondes en jours, heures, minutes et secondes #}
+					{% set jours_restants = differenceEnSecondes // (3600 * 24) %}
+					{% set heures_restantes = (differenceEnSecondes // 3600) % 24 %}
+					{% set minutes_restantes = (differenceEnSecondes // 60) % 60 %}
+					{% set secondes_restantes = differenceEnSecondes % 60 %}
+
+					<a class="gallery__button" href="timbre?timbre_id={{ timbre.timbre_id }}">
+						<article class="gallery-product__item">
+							<div class="gallery-product__middle">
+								<div class="gallery__item-hover-wrapper">
+									<p class="gallery__item-hover">Miser</p>
+								</div>
+								<picture class="gallery-product__image-wrapper">
+									<img class="gallery-product__image" src="/assets/img/{{ fichier_image }}" alt="Image de {{ timbre.timbre_nom }}">
+								</picture>
+							</div>
+							<div class="item-product__description">
+								<h3 class="item-product__title">
+									{{ timbre.timbre_nom }}
+								</h3>
+								<p class="item-index__temps-restant --bold">
+									{% if jours_restants > 0 %}
+										{{ jours_restants }}j
+										{% else %}0j
+									{% endif %}
+									{% if heures_restantes > 0 %}
+										{{ heures_restantes }}h
+										{% else %}0h
+									{% endif %}
+									{% if minutes_restantes > 0 %}
+										{{ minutes_restantes }}m
+										{% else %}0m
+									{% endif %}
+									{% if secondes_restantes > 0 %}
+										{{ secondes_restantes }}s
+										{% else %}0s
+									{% endif %}
+								</p>
+								<div class="item-index__icons">
+									{% if timbre.enchere_cdc_lord == 1 %}
+										<img src="assets/icons/diamond.svg" alt="Coup de coeur du Lord">
+									{% else %}
+										<div class="catalogue__logo">
+											<img src="assets/icons/gray_circle.svg" alt="Empty">
+										</div>
+									{% endif %}
+									<span class="item-index__price">{{ timbre.enchere_prix_plancher }}</span>
+									<img src="assets/icons/gray_circle.svg" alt="Empty">
+								</div>
+							</div>
+						</article>
+					</a>
+				{% endif %}
+			{% endfor %}
+		{% endif %}
+	</div>
+</div>
+<div class="gallery__buttons">
+	<button class="gallery__button button--red">Plus d'offres similaires</button>
+</div></div></section><div id="timbre__modal" class="timbre__modal"><div class="timbre__modal-content">
+<h1 class="timbre__modal-title">Détails</h1>
+<p class="timbre__modal-item">
+	<span class="timbre__modal-subtitle">Dimensions:
+	</span>
+	{{ timbre.timbre_dimensions }}
+</p>
+<p class="timbre__modal-item">
+	<span class="timbre__modal-subtitle">Certification:
+	</span>
+	{{ timbre.timbre_certification|capitalize }}
+</p>
+<p class="timbre__modal-item">
+	<span class="timbre__modal-subtitle">Date de création:
+	</span>
+	{{ timbre.timbre_date_creation }}
+</p>
+<p class="timbre__modal-item">
+	<span class="timbre__modal-subtitle">Condition:
+	</span>
+	{{ timbre.timbre_condition }}
+</p>
+<p class="timbre__modal-item">
+	<span class="timbre__modal-subtitle">Tirage:
+	</span>
+	{{ timbre.timbre_tirage }}
+</p>
+<p class="timbre__modal-item">
+	<span class="timbre__modal-subtitle">Couleur:
+	</span>
+	{{ timbre.timbre_couleurs|capitalize }}
+</p>
+<p class="timbre__modal-item">
+	<span class="timbre__modal-subtitle">Début de la période d'enchère:
+	</span>
+	{{ timbre.enchere_periode_activite_debut }}
+</p>
+<p class="timbre__modal-item">
+	<span class="timbre__modal-subtitle">Fin de la période d'enchère:
+	</span>
+	{{ timbre.enchere_periode_activite_fin }}
+</p></div></div>{# Javascript pour l'affichage des détails concernant le timbre et l'enchère dans une fenêtre modale #}<script>const detailsButton = document.getElementById('detailsButton');
+const modal = document.getElementById('timbre__modal');
+
+// Ajouter un gestionnaire d'événement pour le clic sur le bouton "Détails"
+detailsButton.addEventListener('click', () => {
+modal.classList.add('active');
+});
+
+// Ajouter un gestionnaire d'événement pour le clic en dehors de la fenêtre modale pour la fermer
+window.addEventListener('click', (event) => {
+if (event.target === modal) {
+modal.classList.remove('active');
+}
+});</script>

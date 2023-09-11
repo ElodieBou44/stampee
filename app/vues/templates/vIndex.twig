@@ -1,0 +1,202 @@
+<section class="hero">
+	<div class="hero__description">
+		<h1 class="hero__text">
+			Collectionneurs aguerris à la recherche de rares joyaux ou passionnés
+																																																															        novices prêts à explorer le monde de la philatélie,
+		</h1>
+		<h2 class="hero__quote">votre quête commence ici.</h2>
+		<p class="script hero__signature">- Stampee</p>
+	</div>
+	<div class="hero__image-wrapper">
+		<img class="hero__image" src="assets/img/boat_stamp.webp" alt="Timbre 50 sous de navire">
+	</div>
+</section>
+<section class="rules">
+	<div class="rules__text">
+		<h2 class="rules__title">C’est votre première fois?</h2>
+		<ul class="rules__list">
+			<li class="rules__item">
+				<span class="rules__subtitle">Créez-vous un compte</span>
+				- Profitez pleinement de
+																																																																																				          Stampee, et c'est gratuit !
+			</li>
+			<li class="rules__item">
+				<span class="rules__subtitle">Connectez-vous</span>
+				- Découvrez toutes les opportunités et
+																																																																																				          les exclusivités offertes par Stampee.
+			</li>
+			<li class="rules__item">
+				<span class="rules__subtitle">Participez aux enchères</span>
+				- Lancez-vous dans
+																																																																																				          l'exploration et faites de nouvelles acquisitions pour enrichir
+																																																																																				          votre collection.
+			</li>
+			<li class="rules__item">
+				<span class="rules__subtitle">Sauvegardez pour plus tard</span>
+				- Ne perdez jamais de vue
+																																																																																				          les timbres qui vous intéressent. Nous vous offrons la possibilité
+																																																																																				          de les sauvegarder pour une consultation ultérieure.
+			</li>
+		</ul>
+	</div>
+	<div class="rules_image-wrapper">
+		<img class="rules_image" src="assets/icons/logo_stamp.svg" alt="Stampee logo on a stamp">
+	</div>
+</section>
+<section class="gallery-index">
+	<div class="legend">
+		<h2 class="legend__title">Coups de coeur du Lord</h2>
+		<p class="legend__text">
+			Surveillez nos timbres sélectionnés comme coups de coeur par Lord Stampee lui-même, à travers le site à l’aide de l'icône:
+		</p>
+		<!-- featured_and_rare.php -->
+		<div class="legend__icons">
+			<img src="assets/icons/cc_lord.svg" alt="Coup de coeur du Lord">
+		</div>
+	</div>
+	<div class="gallery-index__list">
+		{% if timbres|length != 0 %}
+			{% for index, timbre in timbres %}
+				{% if index < 5 %}
+					{# Conversion du fichier d'image #}
+					{% set fichiers_images = timbre.fichiers_images %}
+					{% set fichier_image = fichiers_images|split(' ')|first %}
+
+					{# Calcul du temps restant entre la date d'aujourd'hui et la fin de l'enchère #}
+					{% set dateButoir = timbre.enchere_periode_activite_fin %}
+					{% set maintenant = "now" %}
+					{% set dateButoirTimestamp = date(dateButoir)|date("U") %}
+					{% set maintenantTimestamp = date(maintenant)|date("U") %}
+					{% set differenceEnSecondes = dateButoirTimestamp - maintenantTimestamp %}
+
+					{# Conversion des secondes en jours, heures, minutes et secondes #}
+					{% set jours_restants = differenceEnSecondes // (3600 * 24) %}
+					{% set heures_restantes = (differenceEnSecondes // 3600) % 24 %}
+					{% set minutes_restantes = (differenceEnSecondes // 60) % 60 %}
+					{% set secondes_restantes = differenceEnSecondes % 60 %}
+
+					<a class="gallery__button" href="timbre?timbre_id={{ timbre.timbre_id }}">
+						<article class="gallery-index__item">
+							<div class="gallery-index__middle">
+								<div class="gallery__item-hover-wrapper">
+									<p class="gallery__item-hover">Miser</p>
+								</div>
+								<picture class="gallery-index__image-wrapper">
+									<img class="gallery-index__image" src="/assets/img/{{ fichier_image }}" alt="Image de {{ timbre.timbre_nom }}">
+								</picture>
+							</div>
+							<div class="item-index__description">
+								<h3 class="item-index__title">
+									{{ timbre.timbre_nom }}
+								</h3>
+								<p class="item-index__temps-restant --bold">
+									{% if jours_restants > 0 %}
+										{{ jours_restants }}j
+										{% else %}0j
+									{% endif %}
+									{% if heures_restantes > 0 %}
+										{{ heures_restantes }}h
+										{% else %}0h
+									{% endif %}
+									{% if minutes_restantes > 0 %}
+										{{ minutes_restantes }}m
+										{% else %}0m
+									{% endif %}
+									{% if secondes_restantes > 0 %}
+										{{ secondes_restantes }}s
+										{% else %}0s
+									{% endif %}
+								</p>
+									<div class="item-index__icons">
+										<img src="assets/icons/diamond.svg" alt="Coup de coeur du Lord">
+										<span class="item-index__price">{{ timbre.enchere_prix_plancher }}</span>
+										<img src="assets/icons/gray_circle.svg" alt="Empty">
+									</div>
+							</div>
+						</article>
+					</a>
+				{% endif %}
+			{% endfor %}
+		{% endif %}
+	</div>
+	<div class="gallery__buttons">
+		<a>
+			<button class="gallery__button button--gray">Plus d'offres vedettes</button>
+		</a>
+		<a href="catalogue?entite=encheres&action=c">
+			<button class="gallery__button button--red">Recherche avancée</button>
+		</a>
+	</div>
+</section>
+<em class="quote">"Battre les timbres, c'est battre les frontières."<span class="script quote__signature">- Jacques Attali</span>
+</em>
+<section class="biography">
+	<div class="biography__image-wrapper">
+		<img class="biography__image" src="assets/img/lord_stampee.webp" alt="Picture of Lord Stampee">
+	</div>
+	<div class="biography__legend">
+		<h2 class="biography__title">La légende de Lord Stampee</h2>
+		<p class="biography__text">
+			Lord Reginald Stampee est un philatéliste passionné par la
+																																																																													        collection de timbres depuis 1955, année où il a acheté son premier
+																																																																													        timbre de la reine Victoria. Depuis lors, il a consacré une grande
+																																																																													        partie de son temps et de son énergie à l'acquisition de timbres
+																																																																													        rares et précieux. Au fil des ans, Lord Stampee a accumulé une
+																																																																													        collection impressionnante de timbres du monde entier, comprenant
+																																																																													        des émissions rares et historiques, ainsi que des éditions limitées.
+																																																																													        Fort de son expérience en philatélie, Lord Stampee a fini par lancer
+																																																																													        un site web dédié aux enchères de timbres pour les philatélistes du
+																																																																													        monde entier.
+		</p>
+		<button class="button--black">En savoir plus</button>
+	</div>
+</section>
+<section class="news">
+	<h2 class="news__title">Explorations Philatéliques :
+		<br>
+		Dernières Nouvelles à Découvrir</h2>
+	<img class="news__deco" src="assets/icons/red_deco.svg" alt="Red decoration">
+	<div class="news__list">
+		<article class="news__item">
+			<h2 class="news__subtitle">
+				Vente aux enchères philatéliques : Des raretés inestimables font
+																																																																																																		          monter les enchères.
+			</h2>
+			<hr class="subtitle__line">
+			<p>
+				Une vente aux enchères philatéliques de renom a attiré l'attention des collectionneurs du monde entier. Des timbres rares et précieux, tels que des classiques du XIXe siècle et des émissions spéciales, ont suscité une véritable frénésie parmi les enchérisseurs. Les experts prévoient des records de vente pour ces pièces uniques et historiques.
+			</p>
+			<button class="button--gray">Lire cet article</button>
+		</article>
+		<article class="news__item">
+			<h2 class="news__subtitle">
+				Découverte d'un timbre rare : Le légendaire 'Inverted Swan'
+																																																																																																		          retrouvé dans une vieille collection.
+			</h2>
+			<hr class="subtitle__line">
+			<p>
+				Un chercheur en philatélie a fait une découverte sensationnelle en
+																																																																																																		          retrouvant un exemplaire de l'emblématique timbre 'Inverted Swan'.
+																																																																																																		          Seulement quelques-uns existent dans le monde, et ce timbre
+																																																																																																		          imprimé à l'envers est considéré comme l'un des trésors les plus
+																																																																																																		          recherchés par les collectionneurs de timbres-poste.
+			</p>
+			<button class="button--gray">Lire cet article</button>
+		</article>
+		<article class="news__item">
+			<h2 class="news__subtitle">
+				Nouvelle émission spéciale : Les merveilles de la faune sauvage dans les timbres de collection.
+			</h2>
+			<hr class="subtitle__line">
+			<p>
+				Une série de timbres exceptionnelle mettant en vedette les
+																																																																																																		          magnifiques créatures de la faune sauvage a été lancée récemment.
+																																																																																																		          Des tigres majestueux aux papillons colorés, ces timbres rendent
+																																																																																																		          hommage à la biodiversité et captivent les collectionneurs
+																																																																																																		          passionnés par la nature et la philatélie.
+			</p>
+			<button class="button--gray">Lire cet article</button>
+		</article>
+	</div>
+	<button class="button--red">Voir toute l'actualité</button>
+</section>

@@ -1,0 +1,34 @@
+<section>
+	<h1>{{ titre|upper }}</h1>
+
+	<form method="POST" action="admin?entite=utilisateur&action=a">
+
+		<label class="admin__label">Nom</label>
+		<input class="admin__input" name="utilisateur_nom" value="{{ utilisateur.utilisateur_nom }}">
+		<span>&nbsp;{{ erreurs.utilisateur_nom }}</span>
+
+		<label class="admin__label">Prénom</label>
+		<input class="admin__input" name="utilisateur_prenom" value="{{ utilisateur.utilisateur_prenom }}">
+		<span>&nbsp;{{ erreurs.utilisateur_prenom }}</span>
+
+		<label class="admin__label">Courriel</label>
+		<input class="admin__input" name="utilisateur_courriel" value="{{ utilisateur.utilisateur_courriel }}">
+		<span>&nbsp;{{ erreurs.utilisateur_courriel }}</span>
+
+		<label class="admin__label">Mot de passe</label>
+		<input class="admin__input" name="utilisateur_mdp" value="{{ utilisateur.utilisateur_mdp }}">
+		<span>&nbsp;{{ erreurs.utilisateur_mdp }}</span>
+
+		<label class="admin__label">Profil</label>
+		<select class="admin__select" name="utilisateur_profil" value="{{ utilisateur.utilisateur_profil }}">
+			<option>client</option>
+			<option>correcteur</option>
+			<option>editeur</option>
+			<option>administrateur</option>
+		</select>
+		<span>&nbsp;{{ erreurs.utilisateur_profil }}</span>
+
+		<input class="admin__button" type="submit" value="Envoyer">
+
+	</form>
+</section>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="robots" content="noindex, nofollow">
+		<title>{{ titre }}</title>
+		<link rel="stylesheet" type="text/css" href="assets/styles/general.css">
+	</head>
+
+	<body>
+		<div id="page">
+			<header class="admin__header">
+				<p class="admin__conn-deconn">
+					{{ oUtilConn.utilisateur_prenom }}
+					{{ oUtilConn.utilisateur_nom }}
+					<a class="admin__a" href="admin?entite=utilisateur&action=d">Déconnecter</a>
+					<a class="admin__a" href="admin?entite=encheres&action=ale">Enchères</a>
+					<a class="admin__a" href="/">Retour à l'accueil</a>
+				</p>
+			</header>
+			<main>
+
+				{{ include(templateMain) }}
+
+			</main>
+		</div>
+	</body>
+</html></body></html>

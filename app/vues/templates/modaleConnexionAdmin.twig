@@ -1,0 +1,28 @@
+<script type="module">
+	let eDialog = document.getElementById('modaleConnexion');
+eDialog.addEventListener('cancel', event => event.preventDefault());
+eDialog.showModal();
+</script>
+
+<dialog id="modaleConnexion">
+	<section>
+		<h1>Connexion</h1>
+
+		<form name="frmConnexion" action="admin" method="POST">
+
+			<span class="member__error" id="messageErreurConnexion">&nbsp;{{ messageErreurConnexion }}</span>
+
+			<div class="modale__items">
+				<label>Courriel</label>
+				<input name="utilisateur_courriel" value="" class="modale__input">
+			</div>
+			<div class="modale__items">
+				<label>Mot de passe</label>
+				<input type="password" name="utilisateur_mdp" value="" class="modale__input">
+			</div>
+			<input type="submit" value="Connexion" class="modale__button button--red"/>
+			<a href="/" class="modale__link">&#x2767; Retour à la page d'accueil
+			</a>
+		</form>
+	</section>
+</dialog>

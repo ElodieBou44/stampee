@@ -1,0 +1,93 @@
+<section class="catalogue__main">
+	<div class="catalogue__title">
+		<h1 class="catalogue__title-h1">{{ titre }}</h1>
+		<p class="catalogue__title-p">
+			Cliquez sur un timbre pour modifier l'enchère.
+		</p>
+		<p class="messageRetourAction">{{ messageRetourAction }}&nbsp;</p>
+	</div>
+	<div class="catalogue__list">
+		{% if timbres|length != 0 %}
+			{% for timbre in timbres %}
+				{# Calcul du temps restant entre la date d'aujourd'hui et la fin de l'enchère #}
+				{% set dateButoir = timbre.enchere_periode_activite_fin %}
+				{% set maintenant = "now" %}
+				{% set dateButoirTimestamp = date(dateButoir)|date("U") %}
+				{% set maintenantTimestamp = date(maintenant)|date("U") %}
+				{% set differenceEnSecondes = dateButoirTimestamp - maintenantTimestamp %}
+
+				{# Conversion des secondes en jours, heures, minutes et secondes #}
+				{% set jours_restants = differenceEnSecondes // (3600 * 24) %}
+				{% set heures_restantes = (differenceEnSecondes // 3600) % 24 %}
+				{% set minutes_restantes = (differenceEnSecondes // 60) % 60 %}
+				{% set secondes_restantes = differenceEnSecondes % 60 %}
+
+				{# Conversion du fichier d'image #}
+				{% set fichiers_images = timbre.fichiers_images %}
+				{% set fichier_image = fichiers_images|split(' ')|first %}
+
+				<a class="catalogue__item-button" href="compte?entite=membre&action=ame&enchere_id={{ timbre.enchere_id }}&timbre_id={{ timbre.timbre_id }}">
+					<article class="catalogue__item">
+						<div class="catalogue__item-middle">
+							<div class="catalogue__item-hover-wrapper">
+								<p class="catalogue__item-hover">Modifier</p>
+							</div>
+							<picture class="catalogue__item-image-wrapper">
+								<img class="catalogue__item-image" src="/assets/img/{{ fichier_image }}" alt="Image de {{ timbre.timbre_nom }}">
+							</picture>
+						</div>
+						<div class="catalogue__item-description">
+							<h3 class="catalogue__item-title">
+								{{ timbre.timbre_nom }}
+							</h3>
+							<div class="catalogue__item-info">
+								{% if timbre.enchere_cdc_lord %}
+									<div class="catalogue__logo">
+										<img src="assets/icons/diamond.svg" alt="Coup de coeur du Lord"><p>Coup de coeur du Lord</p>
+									</div>
+								{% else %}
+									<div class="catalogue__logo">
+										<img src="assets/icons/white_circle.svg" alt="Space">
+									</div>
+								{% endif %}
+								<p>Offre actuelle:
+									<span class="--bold">
+										{{ timbre.enchere_offre_actuelle_prix }}
+									</span>
+								</p>
+								<p>Pays:
+									{{ timbre.timbre_pays }}</p>
+								<p>Date de création:
+									{{ timbre.timbre_date_creation }}</p>
+								<p>Condition:
+									{{ timbre.timbre_condition }}</p>
+								<p>Temps restant:
+									<span class="--bold">
+										{% if jours_restants > 0 %}
+											{{ jours_restants }}j
+											{% else %}0j
+										{% endif %}
+										{% if heures_restantes > 0 %}
+											{{ heures_restantes }}h
+											{% else %}0h
+										{% endif %}
+										{% if minutes_restantes > 0 %}
+											{{ minutes_restantes }}m
+											{% else %}0m
+										{% endif %}
+										{% if secondes_restantes > 0 %}
+											{{ secondes_restantes }}s
+											{% else %}0s
+										{% endif %}
+									</span>
+								</p>
+							</p>
+						</div>
+					</div>
+				</article>
+			</a>
+		{% endfor %}
+	{% else %}
+		<div class="catalogue__aucun">Aucune enchère.</div>
+	{% endif %}
+</div></section>

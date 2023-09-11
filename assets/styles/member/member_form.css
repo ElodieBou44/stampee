@@ -1,0 +1,96 @@
+.messageRetourAction{
+    color:var(--red); 
+}
+
+.member__page{
+    padding: 5em;
+}
+
+.member__page,
+.ajout-enchere__page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ajout-enchere__page{
+    padding: 0 5em 5em 5em; 
+    background-color: var(--white);
+}
+
+.member__error{
+    font-family: 'Lora italic';
+    color: var(--red);
+}
+
+.ajout-timbre__title,
+.ajout-enchere__title,
+.ajout-mise__title
+{
+    font-family: 'Lora bold';
+    font-size: 30px;
+    padding: 1em;
+}
+
+.ajout-timbre__title,
+.ajout-enchere__title{
+    color: var(--red);
+}
+
+.ajout-mise__title{
+    color: var(--dark-gray);
+}
+
+.ajout-timbre__subtitle{
+    font-size: 20px; 
+}
+
+.ajout-timbre__title{
+    padding: 1em 0 1em 0;
+}
+
+
+.ajout-enchere__title{
+    color: var(--red);
+    padding: 2em 0 2em 0; 
+}
+
+.member__form{
+    font-family: 'Roboto'; 
+    border: 1px solid var(--light-gray);
+    border-radius: 4px;
+    padding: var(--spacing-wide);
+    min-height: 25em;
+}
+
+.member__button{
+    text-transform: uppercase;
+    font-family: "Roboto bold";
+    background-color: var(--white);
+    border-radius: 2px;
+    padding: 7px 12px 7px 12px; 
+    border: 2.5px solid var(--red);
+    display: block;
+    margin: 20px auto 0;
+}
+
+.member__items{
+    display: flex;
+    justify-content: flex-start;
+    gap: var(--spacing); 
+    margin: var(--spacing) 0 var(--spacing) 0; 
+}
+
+.member__input{
+    border-width: 0 0 2px 0;
+    border-style: none none solid none; 
+    border-color: var(--dark-gray);
+    min-width: 20em;
+    outline: none;
+    font-size: 1em;
+    background-color: var(--white);
+}
+
+.--no-underline{
+    border-style: none; 
+}

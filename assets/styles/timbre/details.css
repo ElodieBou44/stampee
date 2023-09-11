@@ -1,0 +1,42 @@
+/* Style pour la fenêtre modale */
+.timbre__modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
+.timbre__modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Style pour afficher la fenêtre modale lorsque la classe "active" est ajoutée */
+.timbre__modal.active {
+    display: block;
+}
+
+.timbre__modal-title{
+    color: var(--red); 
+    font-size: 2em;
+    font-family: 'Lora bold';
+    padding-bottom: 1em; 
+}
+
+.timbre__modal-subtitle{
+    font-family: 'Roboto bold';
+}
+
+.timbre__modal-item{
+    padding-bottom: 1em; 
+    font-family: 'Roboto';
+}

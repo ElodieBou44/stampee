@@ -1,0 +1,124 @@
+{% set fichiers_images = enchere.fichiers_images %}
+{% set fichier_image = fichiers_images|split(' ')|first %}
+
+<section class="ajout-enchere__page">
+	<h1 class="ajout-timbre__title">Modification d'une enchère</h1>
+	<p class="messageRetourActionModifier">{{ messageRetourAction }}&nbsp;</p>
+	<br/>
+	<form enctype="multipart/form-data" class="member__form" name="frmModifierEnchere" method="POST" action="compte?entite=membre&action=moe&enchere_id={{ enchere.enchere_id }}&timbre_id={{ enchere.timbre_id }}">
+		<fieldset>
+			<div class="member__items cache">
+				<label>Id de l'enchère:</label>
+				<input type="text" name="enchere_id" value="{{ enchere.enchere_id }}" class="member__input"/>
+			</div>
+			<div class="member__items">
+				<label>Début de la période d'activité:</label>
+				<input type="text" name="enchere_periode_activite_debut" value="{{ enchere.enchere_periode_activite_debut }}" class="member__input"/>
+			</div>
+			<span class="member__error">&nbsp;{{ erreursEnchere.enchere_periode_activite_debut }}</span>
+			<div class="member__items">
+				<label>Prix plancher:</label>
+				<input type="text" name="enchere_prix_plancher" value="{{ enchere.enchere_prix_plancher }}" class="member__input"/>
+			</div>
+			<span class="member__error">&nbsp;{{ erreursEnchere.enchere_prix_plancher }}</span>
+			<div class="member__items">
+				<label>Fin de la période d'activité:</label>
+				<input type="text" name="enchere_periode_activite_fin" value="{{ enchere.enchere_periode_activite_fin }}" class="member__input"/>
+			</div>
+			<span class="member__error">&nbsp;{{ erreursEnchere.enchere_periode_activite_fin }}</span>
+			<div class="member__items cache">
+				<label>Id de l'utilisateur:</label>
+				<input type="text" name="enchere_utilisateur_id" value="{{ enchere.enchere_utilisateur_id }}"/>
+			</div>
+		</fieldset>
+		<fieldset>
+			<div class="member__items cache">
+				<label>Id du timbre:</label>
+				<input type="text" name="timbre_id" value=" {{ enchere.timbre_id }}" class="member__input"/>
+			</div>
+			<div class="member__items cache">
+				<label>Id de l'enchère:</label>
+				<input type="text" name="timbre_enchere_id" value=" {{ enchere.timbre_enchere_id }}" class="member__input"/>
+			</div>
+			<div class="member__items">
+				<label>Nom du timbre:</label>
+				<input type="text" name="timbre_nom" value=" {{ enchere.timbre_nom }}" class="member__input"/>
+			</div>
+			<span class="member__error">&nbsp;{{ erreursTimbre.timbre_nom }}</span>
+			<div class="member__items">
+				<label>Date de création du timbre:</label>
+				<input type="text" name="timbre_date_creation" value="{{ enchere.timbre_date_creation }}" class="member__input"/>
+			</div>
+			<span class="member__error">&nbsp;{{ erreursTimbre.timbre_date_creation }}</span>
+			<div class="member__items">
+				<label>Pays de provenance du timbre:</label>
+				<select name="timbre_pays">
+					{% set paysProvenance = enchere.timbre_pays %}
+					{% set paysDisponibles = ['Royaume-Uni', 'États-Unis', 'France', 'Allemagne', 'Russie', 'Chine', 'Japon', 'Australie', 'Canada', 'Inde', 'Italie', 'Thaïlande'] %}
+					{% for pays in paysDisponibles %}
+						<option {% if pays == paysProvenance %} selected {% endif %}>{{ pays }}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<span class="member__error">&nbsp;{{ erreursTimbre.timbre_pays }}</span>
+			<div class="member__items">
+				<label>Condition du timbre:</label>
+				<select name="timbre_condition">
+					{% set conditionTimbre = enchere.timbre_condition %}
+					{% set conditionsDisponibles = ['Parfait', 'Excellente', 'Bonne', 'Moyenne', 'Endommagé'] %}
+					{% for condition in conditionsDisponibles %}
+						<option {% if condition == conditionTimbre %} selected {% endif %}>{{ condition }}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<span class="member__error">&nbsp;{{ erreursTimbre.timbre_condition }}</span>
+			<div class="member__items">
+				<label>Dimensions du timbre (hauteur x largeur):</label>
+				<input type="text" name="timbre_dimensions" value="{{ enchere.timbre_dimensions }}" class="member__input"/>
+			</div>
+			<span class="member__error">&nbsp;{{ erreursTimbre.timbre_dimensions }}</span>
+			<div class="member__items">
+				<label>Le timbre est-il certifié?</label>
+				<select name="timbre_certification">
+					{% set certificationTimbre = enchere.timbre_certification %}
+					{% set certificationsDisponibles = {'oui': 'Oui', 'non': 'Non'} %}
+					{% for value, label in certificationsDisponibles %}
+						<option value="{{ value }}" {% if value == certificationTimbre %} selected {% endif %}>{{ label }}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<span class="member__error">&nbsp;{{ erreursTimbre.timbre_certification }}</span>
+			<div class="member__items">
+				<label>Tirage (en nombres):</label>
+				<input type="text" name="timbre_tirage" inputmode="numeric" value="{{ enchere.timbre_tirage }}" class="member__input"/>
+			</div>
+			<span class="member__error">&nbsp;{{ erreursTimbre.timbre_tirage }}</span>
+			<div class="member__items">
+				<label>Couleur principale du timbre:</label>
+				<input type="text" name="timbre_couleurs" value="{{ enchere.timbre_couleurs }}" class="member__input"/>
+			</div>
+			<span class="member__error">&nbsp;{{ erreursTimbre.timbre_couleurs }}</span>
+		</fieldset>
+		<fieldset>
+			<div class="cache">
+				<p>* Si vous n'ajoutez pas de nouvelle image, l'ancienne image sera utilisée.</p>
+				<div class="member__items">
+					<label>Image du timbre:</label>
+					<input type="file" name="image_fichier" class="member__input --no-underline" value="{{ fichier_image }}"/>
+					<select name="image_type">
+						<option value="">Sélectionnez</option>
+						<option value="primaire">Primaire</option>
+						<option value="secondaire">Secondaire</option>
+					</select>
+				</div>
+				<span class="member__error">&nbsp;{{ erreursImage.image_fichier }}</span>
+				<span class="member__error">&nbsp;{{ erreursImage.image_type }}</span>
+			</div>
+			<div class="member__items cache">
+				<input type="text" name="timbre_utilisateur_id" value="{{ oUtilConn.utilisateur_id }}"/>
+			</div>
+			<input type="submit" value="Modifier l'enchère" class="member__button button--red" formaction="compte?entite=membre&action=moe&enchere_id={{ enchere.enchere_id }}&timbre_id={{ enchere.timbre_id }}"/>
+		</fieldset>
+		<input type="submit" value="Supprimer l'enchère" class="member__button button--red" formaction="compte?entite=membre&action=se&enchere_id={{ enchere.enchere_id }}&id={{ oUtilConn.utilisateur_id }}"/>
+	</form>
+</section>

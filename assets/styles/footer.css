@@ -1,0 +1,47 @@
+/* Ligne rouge horizontale décorative */
+.footer_horizontal-line{
+    border-top: 1px solid var(--red);
+}
+
+footer{
+    display: flex;
+    justify-content: space-between;
+    padding: 2em 0 2em 2em; 
+}
+
+footer h5{
+    font-family: "Roboto bold";
+}
+
+.footer__list,
+.footer__sec-link{
+    font-family: "Roboto";
+    color: var(--dark-gray); 
+}
+
+.footer__subtitle{
+    margin-bottom: .5em;
+    font-family: 'Roboto bold'; 
+}
+
+.footer__text{
+    display: flex;
+    gap: 2.5em;
+    line-height: var(--spacing-wide);
+}
+
+.footer__sec-link:hover{
+    font-family: 'Roboto bold';
+    color: var(--red);
+}
+
+.footer__signature-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.footer__signature{
+    font-size: 170px;
+    color: #b037375c; 
+}

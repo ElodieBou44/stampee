@@ -1,0 +1,40 @@
+.biography{
+    display: flex;
+    background-color: var(--red);
+    padding: 2em 0 2em 0;
+}
+
+.biography__legend{
+    background-color: var(--red);
+    padding: 0 4em 0 4em;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    /* text-align: justify; */
+    gap: var(--spacing-wide);
+    width: 50%;
+}
+
+.biography__text, 
+.biography__legend{
+    color: var(--white);
+    line-height: var(--line-height);
+}
+
+.biography__text{
+    font-size: var(--font-size-p);
+}
+
+.biography__title{
+    font-size: var(--font-size-h2);
+}
+
+.biography__image-wrapper{
+    width: 50%;
+}
+
+.biography__image{
+    width: 100%; 
+    object-fit: cover;
+}

@@ -1,0 +1,52 @@
+.news{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3em 6em 3em 6em;
+}
+
+.news__title{
+    font-size: var(--font-size-h2);
+    font-family: 'Roboto bold';
+}
+
+.news__subtitle{
+    font-family: 'Lora bold';
+}
+
+.news__title,
+.news__subtitle{
+    text-align: center;
+}
+
+
+.news__deco{
+    padding: 1em 0 1em 0;
+}
+
+.news__list{
+    display: flex;
+    gap: 4em;
+}
+
+.news__item{
+    /* Inspiration du code de démo carte par Marc-André Charpentier */
+    flex: 1; 
+    display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(30ch, 1fr));
+	grid-auto-rows: auto auto 1fr;
+	position: relative;
+    gap: var(--spacing);
+    line-height: var(--line-height);
+    border: 1px solid var(--dark-gray); 
+    padding: var(--spacing); 
+}
+
+.news > button{
+    margin-top: var(--spacing-wider); 
+}
+
+.subtitle__line{
+    border-top: 1px solid var(--light-gray);
+    height: 1px; 
+}

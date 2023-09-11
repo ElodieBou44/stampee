@@ -1,0 +1,51 @@
+/* Englobe le texte et l'image */
+.rules{
+    display: flex; 
+    justify-content: space-between;
+}
+
+/* Englobe tout le texte */
+.rules__text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    flex: 1; 
+    max-width: 50%;
+    padding-left: 3em; 
+    padding-right: 8em;
+    background-color: var(--dark-gray);
+    color: var(--white);
+}
+
+.rules__title{
+    font-size: var(--font-size-h2); 
+    font-size: 35px;
+    letter-spacing: 0.1em; 
+    padding-bottom: 0.5em;
+}
+
+.rules__subtitle{
+    font-family: 'Lora bold';
+}
+
+.rules__list{
+    line-height: var(--line-height);
+    font-family: 'Lora';
+    font-size: var(--font-size-p);
+}
+
+.rules__item{
+    margin: 1.5em 0 1.5em 0; 
+}
+
+.rules__image-wrapper{
+    flex: 1; 
+    display: flex; 
+    min-width: 50%;
+    justify-content: flex-end;
+
+}
+
+.rules__image{
+    object-fit: cover;
+}

@@ -1,0 +1,61 @@
+<section class="ajout-enchere__page">
+	<h1 class="ajout-mise__title">Miser sur une enchère</h1>
+	<p class="messageRetourAction">{{ messageRetourAction }}&nbsp;</p>
+	<br/>
+	<form class="mise__form" name="frmMiserEnchere" method="POST" action="compte?entite=membre&action=m&enchere_id={{ enchere.enchere_id }}">
+		<h2 class="mise__h2">
+			Enchère du timbre
+			<br><br><span class="mise__span">{{ enchere.timbre_nom }}</span>
+		</h2>
+		<p class="mise__subtitle--bold">
+			Prix plancher:
+			<span class="mise__subtitle">{{ enchere.enchere_prix_plancher }}</span>
+		</p>
+		<p class="mise__subtitle--bold">
+			Offre actuelle:
+			{% if enchere.enchere_offre_actuelle_prix %}
+				<span class="mise__subtitle">{{ enchere.enchere_offre_actuelle_prix }}</span>
+			</p>
+		{% else %}
+			Aucune.
+		{% endif %}
+		<p class="mise__subtitle--bold">
+			Misé par:
+			<span class="mise__subtitle">{{ enchere.enchere_offre_actuelle_nom_membre }}</span>
+		</p>
+		<p class="mise__subtitle--bold">
+			Quantité de mises:
+			<span class="mise__subtitle">{{ enchere.enchere_quantite_mises }}</span>
+		</p>
+		<div class="member__items">
+			<label>Votre mise:</label>
+			<input type="text" name="enchere_offre_actuelle_prix" placeholder="00.00" value="" class="member__input"/>
+		</div>
+		<span class="member__error">&nbsp;{{ erreursMise }}</span>
+		{# Items cachés du formulaire #}
+		<div class="member__items cache">
+			<input type="text" name="enchere_id" value="{{ enchere.enchere_id }}"/>
+		</div>
+		<div class="member__items cache">
+			<input type="text" name="enchere_offre_actuelle_nom_membre" value="{{ oUtilConn.utilisateur_prenom }} {{ oUtilConn.utilisateur_nom }}"/>
+		</div>
+		<div class="member__items cache">
+			<input type="text" name="enchere_periode_activite_debut" value="{{ enchere.enchere_periode_activite_debut }}"/>
+		</div>
+		<div class="member__items cache">
+			<input type="text" name="enchere_periode_activite_fin" value="{{ enchere.enchere_periode_activite_fin }}"/>
+		</div>
+		<div class="member__items cache">
+			<input type="text" name="enchere_prix_plancher" value="{{ enchere.enchere_prix_plancher }}"/>
+		</div>
+		<div class="member__items cache">
+			<input type="text" name="enchere_quantite_mises" value="{{ (enchere.enchere_quantite_mises + 1) }}"/>
+		</div>
+		<div class="member__items cache">
+			<input type="text" name="enchere_cdc_lord" value="{{ enchere.enchere_cdc_lord }}"/>
+		</div>
+		<div class="member__items cache">
+			<input type="text" name="enchere_utilisateur_id" value="{{ enchere.enchere_utilisateur_id }}"/>
+		</div>
+		<input type="submit" value="Faire une mise" class="member__button button--red" formaction="compte?entite=membre&action=me&enchere_id={{ enchere.enchere_id }}"/></form>
+</section>

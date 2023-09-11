@@ -1,0 +1,188 @@
+/* Inspiration pour la navigation: Genevieve Mainville */
+
+/**************   Logo navigation  **************/
+.logo-wrapper{
+    max-width: 4rem; 
+    max-height: var(--spacing);
+    padding: .5em;
+}
+
+.logo{
+    object-fit: cover; 
+}
+
+/**************   Navigations   **************/
+.nav{
+    font-family: "Roboto";
+}
+
+.nav__link{
+    color: var(--dark-gray);
+}
+
+.active:hover,
+.nav--bold:hover,
+.dropdown__link:active,
+.nav-sec__link:active,
+.nav-sec__link:hover{
+    color: var(--red);
+}
+
+.nav__link:hover,
+.nav-sec__link:hover,
+.dropdown__link:hover,
+.nav--bold,
+.active{
+    font-family: "Roboto bold";
+}
+
+.active{
+    text-decoration: underline;
+    text-decoration-color: var(--red);
+    text-decoration-thickness: 4px;
+    text-underline-offset: .5em;
+}
+
+.hidden{
+    display: none; 
+}
+
+/**************   Navigation principale   **************/
+
+.nav-main{
+    display: flex;
+    justify-content: space-between;
+}
+
+.dropdown__link, 
+.nav-main{
+    font-size: var(--nav-font-size); 
+}
+
+.nav-sec__link, 
+.dropdown__link, 
+.nav-main{
+    color: var(--dark-gray);
+}
+
+.nav__list{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;  
+    text-align: right;
+    padding: 0 2em 1em 2em;
+}
+
+/**************   Navigation secondaire   **************/
+
+.nav-sec{
+    padding: 0.5em 2em 2em 0;
+}
+
+.nav-sec__list{
+    display: flex;
+    justify-content: flex-end; 
+}
+
+.nav-sec__itemwrapper{
+    display: flex;
+    align-items: center;
+}
+
+.nav-sec__link--red{
+    color:var(--red);
+}
+
+.nav-sec__item{
+    padding: 0 2em 0 2em; 
+    display: flex;
+    justify-content: center;
+}
+
+.nav-sec__icon{
+    padding-right: .5em;
+}
+
+.dropdown{
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown__link-wrapper{
+    padding: .5em;
+    text-align: left;
+}
+
+.dropdown__link-wrapper > .dropdown__link{
+    font-size: 16px;
+}
+
+.dropdown__content{
+    display: none;
+    position: absolute;
+    min-width: 10em;
+    text-align: center;
+}
+
+.dropdown:hover .dropdown__content {
+    display: block;
+}
+
+select{
+    border: none; 
+}
+
+select, 
+.recherche,
+.dropdown__content{
+    background-color: var(--white);
+}
+
+.connexion__button{
+    text-transform: uppercase;
+    font-family: "Roboto bold";
+    padding: 7px 12px 7px 12px; 
+    background-color: var(--white);
+    border-radius: 2px;
+    border: 2.5px solid var(--red);
+    margin-bottom: 1em;
+}
+
+.connexion__error{
+    color: var(--red);
+    font-family: 'Lora italic';
+}
+
+.utilisateur_nom{
+    color: var(--dark-gray);
+}
+
+.connexion__input{
+    border-width: 0 0 2px 0;
+    border-style: none none solid none; 
+    border-color: var(--dark-gray);
+    min-width: 20em;
+    outline: none;
+    font-size: 1em;
+    background-color: var(--white);
+}
+
+.connexion__form{
+    font-family: 'Roboto'; 
+    border: 1px solid var(--light-gray);
+    border-radius: 4px;
+    padding: var(--spacing-wide);
+    margin-bottom: var(--spacing);
+}
+
+/**************   Recherche   **************/
+
+.recherche{
+    border-width: 0 0 2px 0;
+    border-style: none none solid none; 
+    border-color: var(--dark-gray);
+    min-width: 15em;
+    outline: none;
+    font-size: 20px;
+}

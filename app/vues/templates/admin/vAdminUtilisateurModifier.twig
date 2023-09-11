@@ -1,0 +1,37 @@
+<section>
+	<h1 class="modif__title">{{ titre|upper }}</h1>
+
+	<form method="POST" action="admin?entite=utilisateur&action=m&utilisateur_id={{ utilisateur.utilisateur_id }}" class="modif__form">
+
+		<label class="admin__label">Nom</label>
+		<input class="admin__input" name="utilisateur_nom" value="{{ utilisateur.utilisateur_nom }}">
+		<span>&nbsp;{{ erreurs.utilisateur_nom }}</span>
+
+		<label class="admin__label">Prénom</label>
+		<input class="admin__input" name="utilisateur_prenom" value="{{ utilisateur.utilisateur_prenom }}">
+		<span>&nbsp;{{ erreurs.utilisateur_prenom }}</span>
+
+		<label class="admin__label">Courriel</label>
+		<input class="admin__input" name="utilisateur_courriel" value="{{ utilisateur.utilisateur_courriel }}">
+		<span>&nbsp;{{ erreurs.utilisateur_courriel }}</span>
+
+		<label class="admin__label">Profil</label>
+		<select class="admin__select" name="utilisateur_profil_id" value="{% if utilisateur.utilisateur_profil_id == 1 %} administrateur {% else %} membre {% endif %}">
+			<option value="0">Membre</option>
+			<option value="1">Administrateur</option>
+		</select>
+		<span>&nbsp;{{ erreurs.utilisateur_profil }}</span>
+
+		<label class="admin__label">Statut</label>
+		<select class="admin__select" name="utilisateur_statut" value="{% if utilisateur.utilisateur_statut == "oui" %} Compte actif {% else %} Compte inactif {% endif %}">
+			<option value="oui">Compte actif</option>
+			<option value="non">Compte inactif</option>
+		</select>
+		<span>&nbsp;{{ erreurs.utilisateur_statut }}</span>
+
+		<input class="admin__input" type="hidden" name="utilisateur_id" value="{{ utilisateur.utilisateur_id }}">
+
+		<input class="admin__button" type="submit" value="Envoyer">
+
+	</form>
+</section>
